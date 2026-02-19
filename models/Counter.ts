@@ -1,12 +1,13 @@
 // models/Counter.ts
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
-export interface ICounter extends Document {
+// No need to extend Document in newer Mongoose versions
+export interface ICounter {
   _id: string;
   sequenceValue: number;
 }
 
-const CounterSchema: Schema = new Schema({
+const CounterSchema = new Schema<ICounter>({
   _id: { type: String, required: true },
   sequenceValue: { type: Number, default: 0 },
 });
